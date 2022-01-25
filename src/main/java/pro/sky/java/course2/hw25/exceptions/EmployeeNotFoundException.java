@@ -3,9 +3,10 @@ package pro.sky.java.course2.hw25.exceptions;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-public class EmployeeArrayFullException extends RuntimeException {
-    public EmployeeArrayFullException(String message) {
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public class EmployeeNotFoundException extends RuntimeException {
+    public EmployeeNotFoundException(String message) {
         super(message);
     }
+
 }
