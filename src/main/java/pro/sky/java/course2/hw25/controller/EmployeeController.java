@@ -7,12 +7,13 @@ import org.springframework.web.bind.annotation.RestController;
 import pro.sky.java.course2.hw25.Employee;
 import pro.sky.java.course2.hw25.services.EmployeeService;
 
-import java.util.Set;
+import java.util.List;
 
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
     private final EmployeeService employeeService;
+
 
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
@@ -26,13 +27,17 @@ public class EmployeeController {
 
     }
     @GetMapping( "/remove")
-    public Employee removeEmployee(@RequestParam String firstName,
-                              @RequestParam String lastName)  {
+    public Employee removeEmployee(@RequestParam("firstName") String firstName,
+                              @RequestParam("lastName") String lastName)  {
         return employeeService.removeEmployee(firstName, lastName);
+    }
+    @GetMapping( "/remove/index")
+    public String removeEmployee(@RequestParam("index") int index)  {
+        return employeeService.removeEmployee(index);
     }
 
     @GetMapping( "/get")
-    public Set<Employee> getSet() {
+    public List<Employee> getSet() {
         return employeeService.getSet();
 
 
